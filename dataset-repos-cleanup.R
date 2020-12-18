@@ -15,5 +15,6 @@ df = df %>%
          recommender = str_split(recommender, ", "),
          schemaorgCompliant = as.logical(schemaorgCompliant))
 
+# auto_unbox = TRUE will remove [null] --> null, but will also turn categories of size = 1 to a string instead of a list (sigh)
 df_json = df %>% jsonlite::toJSON()
 write(df_json, "GitHub/dataset-repository-selector/dataset_repositories.json")
